@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import NewWebsiteModal from '../modal/new-site-modal';
 import Link from 'next/link';
+import AsideLinks from './aside-links';
 
 interface Website {
   id: string;
@@ -31,7 +32,7 @@ const Aside: React.FC<AsideProps> = ({ isVisible, websites = [], recentWebsite, 
 
   return (
     <div
-      className={`fixed top-16 left-0 h-full w-64 bg-gray-200 transition-transform duration-300 transform ${
+      className={`fixed top-16 left-0 h-full w-64 border-r transition-transform duration-300 transform ${
         isVisible ? 'translate-x-0' : '-translate-x-full'
       }`}
     >
@@ -68,6 +69,9 @@ const Aside: React.FC<AsideProps> = ({ isVisible, websites = [], recentWebsite, 
               New Post
             </Link>
           )}
+        </div>
+        <div className='pt-6'>
+        {selectedWebsiteId && <AsideLinks id={selectedWebsiteId} />}
         </div>
       </div>
     </div>
